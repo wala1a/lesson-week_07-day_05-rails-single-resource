@@ -1,0 +1,13 @@
+<h1> Edit a movie </h1>
+   <p> <%= link_to 'View movie' , books_path %></p>
+<%= form_for @movie, local: true do |form| %>
+    <p> 
+    <%= form.text_field :title %>
+    </p>
+     <p> 
+    <%= form.text_field :author %>
+    </p>
+    <p> 
+    <%= form.submit %>
+    </p>
+    <% end %>

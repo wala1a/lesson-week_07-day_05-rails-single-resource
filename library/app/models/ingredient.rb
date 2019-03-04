@@ -1,0 +1,2 @@
+class Ingredient < ApplicatioRecord
+end
