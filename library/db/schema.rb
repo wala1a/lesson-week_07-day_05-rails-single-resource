@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_082125) do
+ActiveRecord::Schema.define(version: 2019_03_04_131652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,5 +55,24 @@ ActiveRecord::Schema.define(version: 2019_03_04_082125) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "paintings", force: :cascade do |t|
+    t.string "title"
+    t.string "artist"
+    t.string "painting_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "reviewer"
+    t.text "body"
+    t.integer "rating"
+    t.bigint "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+  end
+
   add_foreign_key "comments", "articles"
+  add_foreign_key "reviews", "movies"
 end

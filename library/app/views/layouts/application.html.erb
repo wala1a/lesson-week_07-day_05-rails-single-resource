@@ -10,6 +10,23 @@
   </head>
 
   <body>
+
+  <h1> Welcome to my app 😍 </h1>
+  <nav>
+   <ul>
+   <li> <%= link_to 'Books', books_path %>
+   </li>
+   <li>
+   <%= link_to 'Movies', movies_path %>
+   </li>
+   <li>
+   <%= link_to 'Articles', articles_path %>
+   </li>
+   <li>
+   <%= link_to 'Paintings', paintings_path %>
+   </li>
+    </ul>
+  </nav>
     <%= yield %>
   </body>
 </html>

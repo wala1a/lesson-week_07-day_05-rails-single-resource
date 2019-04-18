@@ -1,7 +1,33 @@
 <ul>
    <li> <%= @movie.title %> </li>
    <li> <%= @movie.director %> </li>
-   <li> <%= @movie.rating %> </li>
+   
 </ul>
 
 <p> <%= link_to 'View All ' , movies_path %></p>
+<% @movie.reviews.each do |review| %>
+  <p>Reviewer<%=review.reviewer%></p>
+  <p>Review<%=review.body%></p>
+  <p>Rating<%=review.rating%></p>
+<% end %>
+<%= form_with(model: [@movie, @movie.reviews.build], local: true) do |form| %>
+   <p>
+     <%= form.label :reviewer %><br>
+     <%= form.text_field :reviewer %>
+   </p>
+   <p>
+     <%= form.label :body %><br>
+     <%= form.text_area :body %>
+   </p>
+   <p>
+     <%= form.label :rating %><br>
+     <%= form.number_field :rating %>
+   </p>
+   <p>
+     <%= form.submit %>
+   </p>
+ <% end %>
+
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>

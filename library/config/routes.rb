@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :paintings
+  get 'welcome/index'
+  root 'welcome#index' #root mean the main pape when the app start
+  get 'reviews/create'
+  get 'reviews/destroy'
+  resources :movies do
+    resources :reviews
+  end
+
   resources :articles
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 # get '/books' => "books#index", as: 'books'#books_path
@@ -17,20 +26,23 @@ resources :articles do
 end
 
 
-get '/movies' => "movies#index", as: 'movies'
-get '/movies/new' => "movies#new" , as: 'new_movie'
-get '/movies/:id' => "movies#show" , as: 'movie'
-post '/movies' => "movies#create"
-delete '/movies/:id' => "movies#destroy"
-patch '/movies/:id' => "movies#update"
-get '/movies/:id/edit' => "movies#edit", as: 'movie_edit'
+# get '/movies' => "movies#index", as: 'movies'
+# get '/movies/new' => "movies#new" , as: 'new_movie'
+# get '/movies/:id' => "movies#show" , as: 'movie'
+# post '/movies' => "movies#create"
+# delete '/movies/:id' => "movies#destroy"
+# patch '/movies/:id' => "movies#update"
+# get '/movies/:id/edit' => "movies#edit", as: 'movie_edit'
 
-end
+
 
 # Rails.application.routes.draw do
 
+ 
+  # get 'reviews/create'
+  # get 'reviews/destroy'
 #   get '/ingredients' => '/ingredients#index'
 
-# end
+ end
 
 
